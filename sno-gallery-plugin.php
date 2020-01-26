@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Sno Gallery Plugin
  * Description: A very basic gallery plugin for wordpress
- * Version: 0.1
+ * Version: 1.0
  * Author: Martin Graebe
  * Licence: GPL v2 or later
  */
@@ -13,36 +13,54 @@ if (!defined('ABSPATH')){
 }
  
 
+define( 'SNO_GALLERY_PLUGIN_VERSION', '1.0.0' );
 
-
-function snoxel8v_setup_gallery_options(){
-    
-    register_post_type( 'snoxel8v_cpt', 
-                            array(
-                                'labels' => array(
-                                        'name'         => __('Galleries'),
-                                        'single_name'  => __('Gallery'),
-                                ),
-                                'public' => true,
-                                'show_in_menu' => true,
-                                'has_archive' => false,
-                            ) 
-                        );
+class SNO_GALLERY_PLUGIN_XEL18V {
+    function __construct () {
+        add_action( 'init', array($this, 'setup_gallery_cpt') );
+    }
+    function activate(){
+       $this->setup_gallery_cpt();
+        flush_rewrite_rules();
   
-}
-add_action( 'init', 'snoxel8v_setup_gallery_options' );
-function snoxel8v_unsetup_gallery_options(){
-    unregister_post_type( 'snoxel8v_cpt' );
-    flush_rewrite_rules();
+
+    }
+    function deactivate(){
+       
+        flush_rewrite_rules();
+    }
+    function uninstall(){
+        
+    }
+
+
+    function setup_gallery_cpt(){
+    
+        register_post_type( 'snoxel8v_cpt', 
+                                array(
+                                    'labels' => array(
+                                            'name'         => __('Galleries'),
+                                            'single_name'  => __('Gallery'),
+                                    ),
+                                    'public' => true,
+                                    'show_in_menu' => true,
+                                    'has_archive' => false,
+                                ) 
+                            );
+      
+    }
 }
 
-function snoxel8v_install(){
-    snoxel8v_setup_gallery_options();
-    flush_rewrite_rules();
+if (class_exists('SNO_GALLERY_PLUGIN_XEL18V')){
+    $sno_gallery_plugin = new SNO_GALLERY_PLUGIN_XEL18V();
 }
-register_activation_hook( __FILE__, 'snoxel8v_install' );
 
-function snoxel8v_uninstall(){
-    snoxel8v_unsetup_gallery_options();
-}
-register_deactivation_hook( __FILE__, 'snoxel8v_uninstall' );
+register_activation_hook( __FILE__, array($sno_gallery_plugin, 'activate' ));
+
+
+register_deactivation_hook( __FILE__, array($sno_gallery_plugin, 'deactivate' ) );
+
+
+// add uninstall
+
+
