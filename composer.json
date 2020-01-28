@@ -1,0 +1,17 @@
+{
+    "name": "martingraebe/sno-gallery-plugin",
+    "description": "A small gallery plugin for Wordpress",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "MartinGraebe"
+            
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}, 
+    "autoload": {
+        "psr-4": {"Includes\\": "./includes"}
+    }
+}
