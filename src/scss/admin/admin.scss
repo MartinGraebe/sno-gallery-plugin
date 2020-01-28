@@ -1,0 +1,43 @@
+.snoxel8v-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid red;
+    min-height: 400px;
+}
+.snoxel8v-gallery-sub{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.snoxel8v_gallery_array{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.snoxel8v-gallery-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid green;
+    position: relative;
+}
+.snoxel8v-gallery-delete-button::after,
+.snoxel8v-delete-button::after{
+    content: 'x';
+    cursor: pointer;
+    color: red;
+    background-color: white;
+    padding: 0.5rem;
+    border: 1px solid red;
+    border-radius: 1rem;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    z-index: 999;
+}
+.snoxel8v-main-image-container{
+    position: relative;
+   
+}
