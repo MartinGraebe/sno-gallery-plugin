@@ -4,7 +4,11 @@
 if (!defined('WP_UNINSTALL_PLUGIN')) {
     die;
 }
- 
+
+$galleries = get_posts( array('post_type' => 'snoxel8v_cpt', 'numberposts' => -1 ) );
+foreach ( $galleries as $gallery ) {
+    wp_delete_post( $gallery->ID, true );
+}
 /* $option_name = 'wporg_option';
  
 delete_option($option_name);
