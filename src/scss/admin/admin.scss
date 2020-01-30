@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border: 1px solid red;
+    border: 1px solid blue;
     min-height: 400px;
 }
 .snoxel8v-gallery-sub{
@@ -10,17 +10,28 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    
+}
+.snoxel8v-gallery-sub label{
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+.snoxel8v-gallery-sub input {
+    margin-top: 1rem;
 }
 .snoxel8v_gallery_array{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: flex-start;
 }
 .snoxel8v-gallery-item{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border: 1px solid green;
+    
     position: relative;
 }
 .snoxel8v-gallery-delete-button::after,
@@ -41,3 +52,4 @@
     position: relative;
    
 }
+
