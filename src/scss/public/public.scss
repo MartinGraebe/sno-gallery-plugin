@@ -1,0 +1,27 @@
+.snoxel8v-gallery{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  
+}
+.snoxel8v-gallery img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    max-height: 100%;
+    padding: 2rem;
+   
+}
+.snoxel8v-sub-gallery{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+   
+}
+a[id^="snoxel8v-gallery-active-link"]{
+    border: 3px solid currentColor;
+    cursor: default;
+    z-index: 1;
+}
