@@ -27,8 +27,10 @@ class GALLERY_ADMIN_VIEW
     public function register(){
         add_action( 'add_meta_boxes', array($this, 'create_custom_meta_box'));
         add_action( 'save_post', array($this, 'save'));
+        add_action( 'save_post', array($this, 'delete_transient_on_save_post') );
     }
     public function create_custom_meta_box(){
+        
         add_meta_box( 
             
             'snoxel8v_cpt_meta_box', //id
@@ -135,5 +137,23 @@ class GALLERY_ADMIN_VIEW
             }
         }
     }
-    // ADD META FIELDS => THEN ADD JS
+
+    public function delete_transient_on_save_post(){
+        global $post;
+      
+        if (is_object( $post )  && isset($post->post_type) && $post->post_type !== 'snoxel8v_cpt'){
+            return;
+        }
+        if (isset($post->ID)){
+            $id = $post->ID;
+      
+            $transient = 'snoxel8v_gallery_transient'.$id;
+            if( false !== get_transient( $transient )){
+                delete_transient( $transient );
+            }
+
+        }
+       
+    }
+    
 }
