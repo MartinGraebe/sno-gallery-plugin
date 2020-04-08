@@ -16,6 +16,9 @@ class GALLERY_PUBLIC_VIEW
                     'id' => null
                 ),
                 $attr, 'snoxel8v_gallery' );
+             // if style & script are not enqueued yet do so
+            if ( ! wp_style_is( 'sno-gallery-plugin-public-style', $list = 'enqueued' )) { wp_enqueue_style( 'sno-gallery-plugin-public-style'); }
+            if ( ! wp_script_is( 'sno-gallery-plugin-public-script', $list = 'enqueued' )) { wp_enqueue_script( 'sno-gallery-plugin-public-script' ); }
             $id = $atts['id'];
             $transient = 'snoxel8v_gallery_transient'.$id;
             // CREATE TRANSIENT WITH POST ID => EMPTY TRANSIENT ON POST UPDATE

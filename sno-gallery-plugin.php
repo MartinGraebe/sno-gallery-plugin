@@ -39,8 +39,8 @@ class SNO_GALLERY_PLUGIN_XEL18V {
       
    }
    function public_enqueue(){
-    wp_enqueue_style( 'sno-gallery-plugin-public-style', plugins_url( '/public/css/public.css', __FILE__ ) );
-    wp_enqueue_script( 'sno-gallery-plugin-public-script', plugins_url( '/public/js/public.min.js', __FILE__ ) , array(), '1.0.0', true);
+    wp_register_style( 'sno-gallery-plugin-public-style', plugins_url( '/public/css/public.css', __FILE__ ) );
+    wp_register_script( 'sno-gallery-plugin-public-script', plugins_url( '/public/js/public.min.js', __FILE__ ) , array(), '1.0.0', true);
    }
    function activate(){
     
