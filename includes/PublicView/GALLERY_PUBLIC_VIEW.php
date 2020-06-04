@@ -35,17 +35,17 @@ class GALLERY_PUBLIC_VIEW
                 $main_image_id = attachment_url_to_postid( $main_image );
                 $gallery_id_array = explode(',', $gallery);
                 $active_thumb_url = wp_get_attachment_image_src( $main_image_id, 'thumbnail' );
-                $active_thumb_html = '<a  id="'.$css_id_active.'" href='.$main_image.'><img src='.$active_thumb_url[0].' alt="'.$title.'-image"></a>';
+                $active_thumb_html = '<a  id="'.$css_id_active.'" href='.esc_url($main_image).'><img src='.esc_url($active_thumb_url[0]).' alt="'.esc_attr($title).'-image"></a>';
                 $gallery_html = '<div id="'.$css_id_gallery.'" class="snoxel8v-sub-gallery">'.$active_thumb_html;
                 
-                $main_image_html = '<img id="'.$css_id_main.'" alt="'.$title.'-image" src='.$main_image.' >';
+                $main_image_html = '<img id="'.$css_id_main.'" alt="'.esc_attr($title).'-image" src='.esc_url($main_image).' >';
                 if ($gallery === ''  ){ return $main_image_html;} // if there are no images in the gallery besides the main image just return the html for the main image
                 if (count($gallery_id_array) > 0 && $gallery_id_array[0] != null){
                     foreach ($gallery_id_array as $image){
                         $thumb = wp_get_attachment_image_src( $image, 'thumbnail' );
                         $src = wp_get_attachment_image_src( $image, 'full' );
                         $galleryalt = get_the_title( $image );
-                        $gallery_html.='<a href='.$src[0].'><img src='.$thumb[0].' alt="'.$galleryalt.'"></a>';
+                        $gallery_html.='<a href='.esc_url($src[0]).'><img src='.esc_url($thumb[0]).' alt="'.esc_attr($galleryalt).'"></a>';
                     }
 
                 }
